@@ -1,6 +1,8 @@
 /* Box Model Hack */
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 /* Clear fix hack */
@@ -22,9 +24,12 @@
 /*******************************************/
 
 body {
-
+  margin: 15px;
 }
 
+body * {
+  margin: 5px;
+}
 
 /******************************************
 /* LAYOUT
@@ -37,6 +42,21 @@ footer {
 
 }
 
+
 /******************************************
 /* ADDITIONAL STYLES
 /*******************************************/
+
+img {
+  display: block;
+  width: calc(100vw - 60px);
+}
+
+iframe {
+  width: calc(100vw - 60px);
+  height: 500px;
+}
+
+.disable {
+  display: none;
+}
