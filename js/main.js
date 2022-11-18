@@ -1,5 +1,5 @@
 
-document.querySelector('button').addEventListener('click', nasaData)
+document.querySelector('button').addEventListener('click', nasaData);
 
 function nasaData() {
 
@@ -13,18 +13,23 @@ function nasaData() {
     .then(res => res.json())
     .then(data => {
         console.log(data)
-        if(data.media_type === 'video') {
+        if (data.msg) {
             document.querySelector('img').classList.add('disable');
-            document.querySelector('iframe').classList.remove('disable');
-            document.querySelector('iframe').src = data.url;
-            document.querySelector('h2').textContent = data.explanation;
-
-        } else if (data.media_type === 'image'){
             document.querySelector('iframe').classList.add('disable');
-            document.querySelector('img').classList.remove('disable');
+            document.querySelector('h2').textContent = data.msg;
+        } else if (date != '') {
+            if(data.media_type === 'video') {
+                document.querySelector('img').classList.add('disable');
+                document.querySelector('iframe').classList.remove('disable');
+                document.querySelector('iframe').src = data.url;
+                document.querySelector('h2').textContent = data.explanation;
 
-            document.querySelector('img').src = data.hdurl;
-            document.querySelector('h2').textContent = data.explanation;    
+            } else if (data.media_type === 'image'){
+                document.querySelector('iframe').classList.add('disable');
+                document.querySelector('img').classList.remove('disable');    
+                document.querySelector('img').src = data.hdurl;
+                document.querySelector('h2').textContent = data.explanation;    
+            } 
         }
         console.log(data);
     })
